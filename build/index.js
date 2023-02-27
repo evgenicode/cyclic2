@@ -22,8 +22,6 @@ const app = (0, express_1.default)();
 app.use(express_1.default.static("build"));
 app.use(body_parser_1.default.urlencoded({ extended: true }));
 app.use("/api", require("./routes/apiRoutes"));
-// Cyclic runtime: MONGOCLIENT CONNECTION IN A SERVERLESS RUNTIME
-// It is very important to make sure the MongoClient.connect is finished before allowing your app to serve requests.
 const startApp = () => __awaiter(void 0, void 0, void 0, function* () {
     try {
         yield (0, db_1.connectDB)();
